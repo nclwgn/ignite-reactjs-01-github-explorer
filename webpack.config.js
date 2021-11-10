@@ -1,10 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   // Configures environment for development build,
   // which makes it a little faster but less optimized than production
-  mode: 'development',
+  mode: isDevelopment ? 'development' : 'production',
+  // Defines the source map, which allows displaying source code while in the browser
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   // Always using path.resolve for pathname resolving instead of hardcoded
   // paths, which are OS based
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
