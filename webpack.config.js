@@ -16,6 +16,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  // Configures live reload devServer
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public')
+    }
+  },
   // Also 'compiles' the index.html file, referencing the bundle.js file
   plugins: [
     new HtmlWebpackPlugin({
