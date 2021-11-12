@@ -12,14 +12,14 @@ module.exports = {
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   // Always using path.resolve for pathname resolving instead of hardcoded
   // paths, which are OS based
-  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   // Refers to Javascript and React JS files
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   // Configures live reload devServer
   devServer: {
@@ -39,7 +39,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: {
           loader: require.resolve('babel-loader'),
